@@ -1,0 +1,47 @@
+{% extends 'User/User_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color:#e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container-fluid" style="padding-top: 100px;"></div>
+	<table class="table" border="0">
+		<tr>
+			<th>Sl.No.</th>
+			<th>Product Details</th>
+			<th>Quantity</th>
+			<!-- <th>Price</th> -->
+			<th>Total Amount</th>
+			<th>Packing Status</th>
+			<th>Payment Status</th>
+			<th></th>
+
+		</tr>
+		{% for x in var %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{x.product_id.name}}<br>{{x.product_id.price}}/-</td>
+			<td>{{x.cart_id.quantity}}</td>
+			<!-- <td>{{x.product_id.price}}</td> -->
+			<td>{{x.cart_id.total}}/-</td>
+			<td>{{x.packing_status}}</td>
+			<td>{{x.payment_status}}</td>
+			<td><a href="/download_as_pdf/?id={{x.id}}">Download Bill</a></td>
+			
+
+		</tr>
+		{% endfor %}
+	</table>
+
+	
+	
+		
+			</div>
+
+			<div class="container" style="height: auto;"></div>
+
+
+{% endblock %}

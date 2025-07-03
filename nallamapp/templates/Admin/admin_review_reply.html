@@ -1,0 +1,36 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>Reply To Product Reviews</h3>
+			<br>
+            <div class="col-md-10 agileinfo_mail_grid_right">
+					<form action="/admin_review_reply/" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<input type="hidden" name="ii" value="{{ii}}">
+						
+
+						<div class="clearfix"> </div>
+						{% for x in review %}
+						<input type="text" name="review" value="{{x.review}}">
+						{% endfor %}
+						<textarea  name="reply"  required="" placeholder="Reply Here..."></textarea>
+						<input type="submit" value="Submit">
+						<input type="reset" value="Clear">
+					</form>
+		    </div>
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

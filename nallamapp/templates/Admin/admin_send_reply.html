@@ -1,0 +1,44 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>Reply To Complaints</h3>
+			<br>
+            <div class="col-md-10 agileinfo_mail_grid_right">
+					<form action="/admin_send_reply/" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<input type="hidden" name="ii" value="{{ii}}">
+						<!-- <div class="col-md-6 wthree_contact_left_grid">
+							<input type="file" name="img" required="">
+							<input type="text" name="name" placeholder="Product Name*" required="">
+						</div>
+
+						<div class="col-md-6 wthree_contact_left_grid">
+							<input type="text" name="qty" placeholder="Quantity Of Product*" required="">
+							<input type="text" name="price" placeholder="Price Of Product*" required="">
+						</div> -->
+
+						<div class="clearfix"> </div>
+						{% for x in complaint %}
+						<input type="text" name="sub" value="{{x.sub}}" required="">
+						{% endfor %}
+						<textarea  name="reply"  required="" placeholder="Reply Here..."></textarea>
+						<input type="submit" value="Submit">
+						<input type="reset" value="Clear">
+					</form>
+		    </div>
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

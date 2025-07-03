@@ -1,0 +1,54 @@
+
+
+{% extends 'User/user_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #84C639;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<!-- <h3>All Products</h3> -->
+			<br>
+            <div class="col-md-10 agileinfo_mail_grid_right">
+
+
+	   <form action="/product_booking/?id={{x.id}}" method="POST">
+        {% csrf_token %}
+    <div class="container">          
+    <center><h2>Product Details</h2></center> <br> 
+    {% for x in var %}
+                <div class="gallery" align="center">
+                 <div class="col-lg-12 form-inner-cont">
+                     <center>
+                    <img src="{{x.img.url}}" height="250px" width="300px" style="border-radius: 50px;"><br>
+                         <h2>{{x.name}} <br>
+                           ${{x.price}}.00/-</h2>
+                         <b>Qty:</b>{{x.qty}} Ltr<br>
+                         <b>Decription:</b>{{x.discription}}.<br>
+                         </center> </div>
+                  
+                            <div class="cart-add input">
+                            <input type="number" name="number" value="1" id="number"></div>
+                             <div class="form-group"></div>
+                           <a onclick = "this.href='/add_to_cart/?id={{x.id}}&number=' + document.getElementById('number').value"><button type="button" class="btn btn-success btn-osx btn-lg">
+                             𝘼𝙙𝙙 𝙏𝙤 𝘾𝙖𝙧𝙩</button></a>
+                         </div>
+                     </div>
+                            </form>
+                        </div>
+                            
+                    </center> <br>
+                    {% endfor %}
+					
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

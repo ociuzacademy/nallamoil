@@ -1,0 +1,40 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>Add Product Details</h3>
+			<br>
+            <div class="col-md-10 agileinfo_mail_grid_right">
+					<form action="/admin_add_product/" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div class="col-md-6 wthree_contact_left_grid">
+							<input type="file" name="img" required="">
+							<input type="text" name="name" placeholder="Product Name*" required="" pattern="[A-Za-z\s]{1,32}">
+						</div>
+
+						<div class="col-md-6 wthree_contact_left_grid">
+							<input type="text" name="qty" placeholder="Quantity Of Product*" required="" pattern="[0-9]{1,3}">
+							<input type="text" name="price" placeholder="Price Of Product*" required="" pattern="[0-9]{1,4}">
+						</div>
+
+						<div class="clearfix"> </div>
+						<textarea  name="discription"  required="">More Discription Here...</textarea>
+						<input type="submit" value="Submit">
+						<input type="reset" value="Clear">
+					</form>
+		    </div>
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

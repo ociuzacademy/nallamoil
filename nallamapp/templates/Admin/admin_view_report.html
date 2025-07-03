@@ -1,0 +1,43 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>All Work Report</h3>
+			<br>
+            <table class="table">
+            	<tr>
+            		<th>Sl.No.</th>
+            		<th>Date</th>
+            		<th>Time</th>
+            		<th>Work Report</th>
+                        <th>Staff Details</th>
+            		<!-- <th></th> -->
+
+            	</tr>
+            	{% for x in var %}
+            	<tr>
+            		<td>{{forloop.counter}}</td>
+            		<td>{{x.date}}</td>
+            		<td>{{x.time}}</td>
+            		<td>{{x.work}}</td>
+                        <td>{{x.user_id.name}}<br>{{x.user_id.email}}<br>{{x.user_id.phone}}</td>
+            		<!-- <td><a href="//" class="btn btn-success">Remove</a></td> -->
+
+            	</tr>
+            	{% endfor %}
+            </table>
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

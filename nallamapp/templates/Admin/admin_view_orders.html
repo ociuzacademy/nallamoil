@@ -1,0 +1,105 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+	<table class="table" border="0">
+		<tr>
+			<th>Sl.No.</th>
+			<th>Product Details</th>
+			<th>Quantity</th>
+			<th>Total Amount</th>
+			<th>Packing Status</th>
+			<th>Payment Status</th>
+			<th>User Details</th>
+			<th></th>
+
+		</tr>
+		{% for x in var %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{x.product_id.name}}<br>{{x.product_id.price}}/-</td>
+			<td>{{x.cart_id.quantity}}</td>
+			<!-- <td>{{x.product_id.price}}</td> -->
+			<td>{{x.cart_id.total}}/-</td>
+			<td>{{x.packing_status}}</td>
+			<td>{{x.payment_status}}</td>
+			<td>{{x.user_id.name}}</td>
+			<td><a href="/admin_picked_order/?id={{x.id}}" class="btn btn-success">Picked</a> </td>
+
+		</tr>
+		{% endfor %}
+	</table>
+
+
+<br><h2>Cancelled Products</h2>
+	<table class="table" border="0">
+		<tr>
+			<th>Sl.No.</th>
+			<th>Product Details</th>
+			<th>Quantity</th>
+			<th>Total Amount</th>
+			<th>Packing Status</th>
+			<th>Payment Status</th>
+			<th>User Details</th>
+			<th></th>
+		</tr>
+		{% for x in var2 %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{x.product_id.name}}<br>{{x.product_id.price}}/-</td>
+			<td>{{x.cart_id.quantity}}</td>
+			<td>{{x.cart_id.total}}/-</td>
+			<td>{{x.packing_status}}</td>
+			<td>{{x.payment_status}}</td>
+			<td>{{x.user_id.name}}</td>
+			<td><a href="/admin_refund/?id={{x.id}}" class="btn btn-success">Refunded</a> </td>
+		</tr>
+		{% endfor %}
+	</table>
+
+
+
+
+	<br><h2>Picked Products</h2>
+	<table class="table" border="0">
+		<tr>
+			<th>Sl.No.</th>
+			<th>Product Details</th>
+			<th>Quantity</th>
+			<!-- <th>Price</th> -->
+			<th>Total Amount</th>
+			<th>Packing Status</th>
+			<th>Payment Status</th>
+			<th>User Details</th>
+			<th></th>
+
+		</tr>
+		{% for x in var1 %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{x.product_id.name}}<br>{{x.product_id.price}}/-</td>
+			<td>{{x.cart_id.quantity}}</td>
+			<!-- <td>{{x.product_id.price}}</td> -->
+			<td>{{x.cart_id.total}}/-</td>
+			<td>{{x.packing_status}}</td>
+			<td>{{x.payment_status}}</td>
+			<td>{{x.user_id.name}}</td>
+			<td><a href="/admin_complete_order/?id={{x.id}}" class="btn btn-success">Completed</a> </td>
+
+		</tr>
+		{% endfor %}
+	</table>
+
+	<br>
+			</div>
+
+			<div class="container" style="height: auto;"></div>
+
+
+{% endblock %}

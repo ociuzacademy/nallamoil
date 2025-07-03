@@ -1,0 +1,55 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>Update Product Details</h3>
+			<br>
+            
+{% for x in var %}
+            <div class="agileinfo_single">
+				<h5>{{x.name}}</h5>
+				<div class="col-md-4 agileinfo_single_left">
+					<img id="example" src="{{x.img.url}}" alt=" " class="img-responsive" />
+				</div>
+				<div class="col-md-8 agileinfo_single_right">
+					
+					<form action="/admin_edit_product/" method="post">
+						{% csrf_token %}
+						<input type="hidden" name="ii" value="{{ii}}">
+
+					<div class="w3agile_description">
+						<h4>Product Name:</h4>
+						<p><input type="text" name="name" value="{{x.name}}" pattern="[A-Za-z\s]{1,32}"/></p><br>
+
+						<h4>Description :</h4>
+						<p><input type="text" name="discription" value="{{x.discription}}" style="width: 100px;" /></p><br>
+
+						<h4>Quantity:</h4>
+						<p><input type="text" name="qty" value="{{x.qty}}" pattern="[0-9]{1,3}"/></p><br>
+					</div>
+					<div class="snipcart-item block">
+						<div class="snipcart-thumb agileinfo_single_right_snipcart">
+							<h4><input type="text" name="price" value="{{x.price}}" pattern="[0-9]{1,4}"/> <span>$25.00</span></h4>
+						</div>
+						<div class="snipcart-details agileinfo_single_right_details">
+							<input type="submit" name="submit" value="Update" class="button" />
+						</div></div>
+					</form>
+					
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			{% endfor %}
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

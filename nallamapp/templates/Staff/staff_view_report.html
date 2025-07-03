@@ -1,0 +1,68 @@
+{% extends 'Staff/staff_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+            
+		<h3>All Order Details</h3>
+		<br>
+            <table class="table">
+            <tr>
+            	<th>Sl.No.</th>
+            	<th>Date</th>
+            	<th>Time</th>
+            	<th>Order Product Details</th>
+                  <th>Order Details</th>
+                  <th>User Details</th>
+                  <th>Packing Status</th>
+
+            </tr>
+            {% for x in order %}
+            <tr>
+            	<td>{{forloop.counter}}</td>
+            	<td>{{x.date}}</td>
+            	<td>{{x.time}}</td>
+            	<td>{{x.product_id.name}}<br>{{x.product_id.price}}/-</td>
+                  <td>Total Rs.{{x.total}}/-<br>Status:{{x.payment_status}}</td>
+                  <td>{{x.user_id.name}}<br>{{x.user_id.email}}<br>{{x.user_id.phone}}</td>
+                  <td>{{x.packing_status}}</td>
+            </tr>
+            {% endfor %}
+            </table>
+           
+
+
+
+
+    
+           <!--  <h3>All Work Report</h3>
+            <br>
+            <table class="table">
+            <tr>
+                  <th>Sl.No.</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Work Report</th>
+            </tr>
+            {% for x in var %}
+            <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{x.date}}</td>
+                  <td>{{x.time}}</td>
+                  <td>{{x.work}}</td>
+          
+            </tr>
+            {% endfor %}
+            </table> -->
+          
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

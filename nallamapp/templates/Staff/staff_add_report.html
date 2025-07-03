@@ -1,0 +1,40 @@
+{% extends 'Staff/staff_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>Add Work Report</h3>
+			<br>
+            <div class="col-md-10 agileinfo_mail_grid_right">
+					<form action="/staff_add_report/" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div class="col-md-6 wthree_contact_left_grid">
+							<!-- <input type="file" name="img" required=""> -->
+							<input type="text" name="time" placeholder="Working Hours*00.00Hrs" required="">
+						</div>
+
+						<div class="col-md-6 wthree_contact_left_grid">
+							<input type="text" name="sub" placeholder="Subject*" required="" pattern="[A-Za-z\s]{1,32}">
+							<!-- <input type="text" name="price" placeholder="Price Of Product*" required=""> -->
+						</div>
+
+						<div class="clearfix"> </div>
+						<textarea  name="work"  required="" placeholder="Work Discription.."></textarea>
+						<input type="submit" value="Submit">
+						<input type="reset" value="Clear">
+					</form>
+		    </div>
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

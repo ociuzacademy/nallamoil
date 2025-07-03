@@ -1,0 +1,69 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>All Complaints</h3>
+			<br>
+            <table class="table">
+            	<tr>
+            		<th>Sl.No.</th>
+            		<th>Date</th>
+            		<th>Subject</th>
+            		<th>Description</th>
+                        <th>Staff Details</th>
+                        <!-- <th>Reply</th> -->
+                        <th></th>
+            	</tr>
+            	{% for x in var %}
+            	<tr>
+            		<td>{{forloop.counter}}</td>
+            		<td>{{x.date}}</td>
+            		<td>{{x.sub}}</td>
+            		<td>{{x.complaint}}</td>
+                        <td>{{x.user_id.name}}<br>{{x.user_id.email}}<br>{{x.user_id.phone}}</td>
+                        <!-- <td>{{x.reply}}</td> -->
+            		<td><a href="/admin_send_reply/?id={{x.id}}" class="btn btn-success">Send Reply</a></td>
+
+            	</tr>
+            	{% endfor %}
+            </table>
+            <h2>Replied Complaints</h2>
+            <br>
+            <table class="table">
+                  <tr>
+                        <th>Sl.No.</th>
+                        <th>Date</th>
+                        <th>Subject</th>
+                        <th>Description</th>
+                        <th>Staff Details</th>
+                        <th>Reply</th>
+                        <!-- <th></th> -->
+                  </tr>
+                  {% for x in var1 %}
+                  <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{x.date}}</td>
+                        <td>{{x.sub}}</td>
+                        <td>{{x.complaint}}</td>
+                        <td>{{x.user_id.name}}<br>{{x.user_id.email}}<br>{{x.user_id.phone}}</td>
+                        <td>{{x.reply}}</td>
+                        <!-- <td><a href="//" class="btn btn-success">Send Reply</a></td> -->
+
+                  </tr>
+                  {% endfor %}
+            </table>
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

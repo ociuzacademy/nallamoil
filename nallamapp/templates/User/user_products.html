@@ -1,0 +1,50 @@
+{% extends 'User/user_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color: #84C639;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>All Products</h3>
+			<br>
+			{% for x in var %}
+            <div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="/static/images/offer.png" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="/user_product_details/?id={{x.id}}"><img src="{{x.img.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{x.name}} ({{x.qty}})</p>
+											<h4>${{x.price}} <span>$5.00</span></h4>
+											<a href="/user_product_details/?id={{x.id}}" style="text-align: right;">Reviews</a>
+										</div>
+
+										<div class="snipcart-details">
+											<a href="/product_detail_view/?id={{x.id}}"><button id="btn1"class="button" name="submit">ADD TO CART</button></a>
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+						</div>
+					</div>
+					<br>
+					{% endfor %}
+					
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

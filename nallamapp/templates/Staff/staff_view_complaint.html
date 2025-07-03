@@ -1,0 +1,42 @@
+{% extends 'Staff/staff_home.html' %}
+{% block content %}
+<style type="text/css">
+	th{
+		background-color:#e6e6e6;
+		color: black;
+	}
+</style>
+<div class="w3l_banner_nav_right">
+	<div class="container" style="padding-top: 100px;"></div>
+
+
+			<h3>All Complaints</h3>
+			<br>
+            <table class="table">
+            	<tr>
+            		<th>Sl.No.</th>
+            		<th>Date</th>
+            		<th>Subject</th>
+            		<th>Description</th>
+            		<th>Reply</th>
+
+            	</tr>
+            	{% for x in var %}
+            	<tr>
+            		<td>{{forloop.counter}}</td>
+            		<td>{{x.date}}</td>
+            		<td>{{x.sub}}</td>
+            		<td>{{x.complaint}}</td>
+                        <td>{{x.reply}}</td>
+            		<!-- <td><a href="//" class="btn btn-success">Remove</a></td> -->
+
+            	</tr>
+            	{% endfor %}
+            </table>
+
+
+
+
+</div>
+<div class="container" style="height: auto;"></div>
+{% endblock %}

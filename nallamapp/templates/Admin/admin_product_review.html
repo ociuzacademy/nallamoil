@@ -1,0 +1,77 @@
+{% extends 'Admin/admin_home.html' %}
+{% block content %}
+
+<style>
+    th {
+        background-color: #e6e6e6;
+        color: black;
+    }
+</style>
+
+<div class="container" style="padding-top: 100px;">
+    <h3>Pending Product Reviews</h3>
+    <table class="table">
+        <tr>
+            <th>Sl.No.</th>
+            <th>Product Details</th>
+            <th>Reviews</th>
+            <th>User Details</th>
+            <th>Reply</th>
+        </tr>
+        {% for x in var %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+                <img src="{{ x.product_id.img.url }}" width="100px" height="100px"><br>
+                {{ x.product_id.name }}<br>
+                ₹{{ x.product_id.price }}
+            </td>
+            <td>{{ x.review }}</td>
+            <td>
+                {{ x.user_id.name }}<br>
+                {{ x.user_id.email }}
+            </td>
+            <td>
+                <a href="/admin_review_reply/?id={{ x.id }}" class="btn btn-info">Reply</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No pending reviews.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Replied Product Reviews</h3>
+    <table class="table">
+        <tr>
+            <th>Sl.No.</th>
+            <th>Product Details</th>
+            <th>Review</th>
+            <th>User Details</th>
+            <th>Reply</th>
+        </tr>
+        {% for x in var1 %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+                <img src="{{ x.product_id.img.url }}" width="100px" height="100px"><br>
+                {{ x.product_id.name }}<br>
+                ₹{{ x.product_id.price }}
+            </td>
+            <td>{{ x.review }}</td>
+            <td>
+                {{ x.user_id.name }}<br>
+                {{ x.user_id.email }}
+            </td>
+            <td>{{ x.reply }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No replied reviews.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
